@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/lin_main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_1">
+
+    <ImageView
+        android:id="@+id/img_type"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/icon_folder" />
+
+    <TextView
+        android:id="@+id/txt_file"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center|left"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:text="the name is folnai"/>
+
+    <LinearLayout
+        android:id="@+id/lin_song"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/txt_artist"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:gravity="center|left"
+            android:textColor="@color/white"
+            android:text="the name is folnai"/>
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:gravity="center|left"
+            android:textColor="@color/white"
+            android:text="the name is folnai"/>
+    </LinearLayout>
+
+</LinearLayout>

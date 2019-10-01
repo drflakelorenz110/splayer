@@ -39,4 +39,5 @@ dependencies {
     compile 'com.ogaclejapan.smarttablayout:library:2.0.0@aar'
     //Optional: see how to use the utility.
     compile 'com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar'
+    implementation 'com.ealva:ealvatag:0.4.2'
 }
