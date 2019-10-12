@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <declare-styleable name="TextViewNormal" parent="android:Widget.TextView">
+<!--        <attr name="text_style" format="boolean">false</attr>-->
+<!--        <attr name="fontType" />-->
+    </declare-styleable>
+
 </resources>

@@ -1,6 +1,10 @@
 package com.shobeyri.splayer.listFragments.fileManager
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.media.MediaMetadataRetriever
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +14,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.shobeyri.splayer.R
 import com.shobeyri.splayer.TagModel
+import java.io.File
+import java.util.*
 
 class AdapterFileManager(fragment: FileManagerFragment,list: MutableList<FileModel>
     ) : RecyclerView.Adapter<AdapterFileManager.VH>()
@@ -43,12 +49,17 @@ class AdapterFileManager(fragment: FileManagerFragment,list: MutableList<FileMod
         if(list[position].isSong)
         {
             holder.img_type.setImageResource(R.drawable.icon_music)
+
             holder.lin_song.visibility = View.VISIBLE
             holder.txt_file.visibility = View.GONE
 
             var tags : TagModel = TagModel(list[position].path)
             holder.txt_title.text = tags.title
             holder.txt_artist.text = tags.artist
+
+            holder.itemView.setOnClickListener(View.OnClickListener {
+                fragment.play(list,position)
+            })
         }
         else
         {
@@ -67,6 +78,14 @@ class AdapterFileManager(fragment: FileManagerFragment,list: MutableList<FileMod
         }
     }
 
+    override fun getItemId(position: Int): Long {
+        return super.getItemId(position)
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return super.getItemViewType(position)
+    }
+
     class VH(itemView : View) : RecyclerView.ViewHolder(itemView)
     {
         var txt_artist : TextView = itemView.findViewById(R.id.txt_artist);
@@ -83,4 +102,5 @@ interface CallBack
 {
     fun goToNextPage(fileModel : FileModel)
     fun prePage() : Boolean
+    fun play(list : MutableList<FileModel> , position: Int)
 }

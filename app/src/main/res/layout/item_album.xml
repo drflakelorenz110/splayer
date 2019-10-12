@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="5dp"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+
+    <View
+        android:id="@+id/view_background"
+        android:background="@drawable/background_rounded_1"
+        android:layout_alignTop="@id/img_albumCover"
+        android:layout_marginTop="110dp"
+        android:layout_width="170dp"
+        android:layout_height="110dp"/>
+
+    <ImageView
+        android:id="@+id/img_albumCover"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:padding="2dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/background_rounded_0"/>
+
+    <TextView
+        android:id="@+id/txt_artist"
+        android:layout_alignTop="@id/img_albumCover"
+        android:layout_marginTop="150dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="rammstein"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_alignTop="@id/img_albumCover"
+        android:layout_marginTop="170dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="rammstein"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/txt_num"
+        android:layout_alignTop="@id/img_albumCover"
+        android:layout_marginTop="200dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="rammstein"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

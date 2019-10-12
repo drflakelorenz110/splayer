@@ -5,8 +5,19 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="black">#000000</color>
+    <color name="blue_dark">#263238</color>
+    <color name="blue">#455a64</color>
     <color name="white">#FFFFFF</color>
-    <color name="gray_blue">#37474f</color>
-    <color name="gray_blue_light">#607d8b</color>
+    <color name="brown_light">#795548</color>
+    <color name="brown">#795548</color>
+    <color name="oragne">#BF360C</color>
+
+
+    <color name="black_alpha">#80000000</color>
+    <color name="white_alpha">#80FFFFFF</color>
+    <color name="brown_light_alpha">#80795548</color>
+    <color name="oragne_alpha">#80BF360C</color>
+    <color name="gray_blue_alpha">#8037474f</color>
+    <color name="gray_blue_light_alpha">#80607d8b</color>
 
 </resources>

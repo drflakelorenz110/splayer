@@ -9,5 +9,7 @@ public class TAGS {
         val ALBUM : String = "Album"
 
         var FRAGMENT_FILE_MANAGER = 0
+
+        var ALPHA = 0.6f
     }
 }

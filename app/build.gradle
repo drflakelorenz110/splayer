@@ -9,7 +9,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.shobeyri.splayer"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -36,8 +36,13 @@ dependencies {
     def nav_version = "2.1.0"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-    compile 'com.ogaclejapan.smarttablayout:library:2.0.0@aar'
+    implementation 'com.ogaclejapan.smarttablayout:library:2.0.0@aar'
     //Optional: see how to use the utility.
-    compile 'com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar'
+    implementation 'com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar'
     implementation 'com.ealva:ealvatag:0.4.2'
+    implementation 'com.orhanobut:dialogplus:1.11@aar'
+    implementation 'me.grantland:autofittextview:0.2.+'
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
+    implementation 'com.writingminds:FFmpegAndroid:0.3.2'
+    implementation 'com.edmodo:rangebar:1.0.0'
 }

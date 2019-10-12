@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.shobeyri.splayer.CallBackMenu
 
 import com.shobeyri.splayer.R
 import kotlinx.android.synthetic.main.fragment_file_manager.*
@@ -17,14 +18,17 @@ import java.util.*
 
 class FileManagerFragment : Fragment() , CallBack {
 
+
     lateinit var root : View
     var TAGS : String = "Ali FileManagerFragment"
     var levelStack : Stack<String> = Stack();
     var level = 0;
+    lateinit var adapter : AdapterFileManager ;
     lateinit var menu : CallBackMenu
     companion object {
-        public fun newInstance(): FileManagerFragment {
+        public fun newInstance(menu : CallBackMenu): FileManagerFragment {
             var fragment : FileManagerFragment = FileManagerFragment()
+            fragment.menu = menu
             return fragment;
         }
     }
@@ -65,8 +69,8 @@ class FileManagerFragment : Fragment() , CallBack {
                             file.name.endsWith(".ogg")||
                             file.name.endsWith(".aac"))
                             list.add(FileModel(file.name,file.absolutePath,true))
-                        else
-                            list.add(FileModel(file.name,file.absolutePath,false))
+                        else// if(anySongHere(file.absolutePath))
+                               list.add(FileModel(file.name,file.absolutePath,false))
                     }
                 }
                 catch (e : Exception)
@@ -83,9 +87,9 @@ class FileManagerFragment : Fragment() , CallBack {
         else
         {
             try {
-                if(levelStack.size > 1)
+                if(levelStack.size > 0)
                     list.add(FileModel("..","..",false))
-                var rootFolder: File = File(path)
+                val rootFolder: File = File(path)
                 val files = rootFolder.listFiles()
                 for(file in files)
                 {
@@ -94,7 +98,7 @@ class FileManagerFragment : Fragment() , CallBack {
                         file.name.endsWith(".ogg")||
                         file.name.endsWith(".aac"))
                         list.add(FileModel(file.name,file.absolutePath,true))
-                    else
+                    else if(anySongHere(file.absolutePath))
                         list.add(FileModel(file.name,file.absolutePath,false))
                 }
             }
@@ -106,10 +110,27 @@ class FileManagerFragment : Fragment() , CallBack {
         initRecycler(list)
     }
 
+    fun anySongHere(rootPath: String): Boolean {
+        val ret = false
+        val rootFolder = File(rootPath)
+        val files = rootFolder.listFiles()
+        for (file in files!!) {
+            if (file.name.endsWith(".mp3") ||
+                    file.name.endsWith(".wav")||
+                    file.name.endsWith(".ogg")||
+                    file.name.endsWith(".aac")) {
+                return true
+            } else if (file.isDirectory) {
+                return anySongHere(file.absolutePath)
+            }
+        }
+        return ret
+    }
+
     fun initRecycler(list : MutableList<FileModel>)
     {
-        recycler_files.adapter =
-            AdapterFileManager(FileManagerFragment@this , list)
+        adapter = AdapterFileManager(FileManagerFragment@this , list)
+        recycler_files.adapter = adapter
         recycler_files.smoothScrollToPosition(0)
     }
 
@@ -117,7 +138,7 @@ class FileManagerFragment : Fragment() , CallBack {
     {
         if(fileModel.name.equals(".."))
         {
-            menu.onBack()
+            prePage()
         }
         else
         {
@@ -131,12 +152,31 @@ class FileManagerFragment : Fragment() , CallBack {
         if(level == 1)
             return true
         else
+        {
+            levelStack.pop()
             getFiles(levelStack.peek(),--level)
+        }
+
         return  false
     }
 
-    interface CallBackMenu
-    {
-        fun onBack()
+    override fun play(list: MutableList<FileModel>, position: Int) {
+
+        var listSongs: MutableList<FileModel> = ArrayList();
+        var pos = -1;
+        for((i,item) in list.withIndex())
+        {
+            if(item.isSong)
+                listSongs.add(item)
+        }
+
+        for((i,item) in listSongs.withIndex())
+        {
+            if(item.path.equals(list[position].path))
+                pos = i;
+        }
+
+        menu.play(listSongs,pos)
     }
+
 }

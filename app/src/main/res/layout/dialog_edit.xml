@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="15dp"
+    android:layout_marginLeft="15dp"
+    android:layout_alignParentBottom="true"
+    android:layout_marginBottom="0dp"
+    android:background="@drawable/background_dialog2"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/top_barr"
+        android:background="@drawable/background_curved_1"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_height="wrap_content">
+
+        <com.shobeyri.splayer.components.TextViewNormal
+            android:id="@+id/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="4dp"
+            android:text="Edit"
+            android:textColor="#fff"
+            android:textSize="24dp" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@id/top_barr"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.shobeyri.splayer.components.EditTextNormal
+                android:id="@+id/edit_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="30"
+                android:gravity="center"
+                android:hint="change the title"/>
+
+            <com.shobeyri.splayer.components.EditTextNormal
+                android:id="@+id/edit_artist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="30"
+                android:gravity="center"
+                android:hint="change the artist"/>
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:background="@drawable/btn_background"
+                android:gravity="center"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content">
+                <com.shobeyri.splayer.components.TextViewNormal
+                    android:id="@+id/btn_change"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Change"
+                    android:textSize="24dp"
+                    android:gravity="center"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
