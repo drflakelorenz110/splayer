@@ -11,6 +11,19 @@ import android.widget.SeekBar
 import com.edmodo.rangebar.RangeBar
 import com.shobeyri.splayer.R
 import kotlinx.android.synthetic.main.dialog_trim.*
+import com.github.hiteshsondhi88.libffmpeg.FFmpeg
+import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegNotSupportedException
+import com.github.hiteshsondhi88.libffmpeg.LoadBinaryResponseHandler
+import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegCommandAlreadyRunningException
+import com.github.hiteshsondhi88.libffmpeg.ExecuteBinaryResponseHandler
+import android.os.AsyncTask.execute
+
+
+
+
+
+
+
 
 class DialogTrim(context: Context , callBack : CallBackDialogTrim ,
                  path : String) : Dialog(context) {
@@ -18,6 +31,7 @@ class DialogTrim(context: Context , callBack : CallBackDialogTrim ,
     lateinit var player : MediaPlayer
     var callBack : CallBackDialogTrim
     var path : String
+    lateinit var ffmpeg : FFmpeg
 
     init {
         this.callBack = callBack
@@ -31,10 +45,48 @@ class DialogTrim(context: Context , callBack : CallBackDialogTrim ,
 
         initHandler()
         initSeekAndRange()
+        initTrim()
         btn_trim.setOnClickListener(View.OnClickListener
         {
+//            val command = "import android.R";
+//            try {
+//                // to execute "ffmpeg -version" command you just need to pass "-version"
+//                ffmpeg.execute(cmd, object : ExecuteBinaryResponseHandler() {
+//
+//                    override fun onStart() {}
+//
+//                    override fun onProgress(message: String?) {}
+//
+//                    override fun onFailure(message: String?) {}
+//
+//                    override fun onSuccess(message: String?) {}
+//
+//                    override fun onFinish() {}
+//                })
+//            } catch (e: FFmpegCommandAlreadyRunningException) {
+//                // Handle if FFmpeg is already running
+//            }
 
         })
+    }
+
+    private fun initTrim() {
+        ffmpeg = FFmpeg.getInstance(context)
+        try {
+            ffmpeg.loadBinary(object : LoadBinaryResponseHandler() {
+
+                override fun onStart() {}
+
+                override fun onFailure() {}
+
+                override fun onSuccess() {}
+
+                override fun onFinish() {}
+            })
+        } catch (e: FFmpegNotSupportedException) {
+            // Handle if FFmpeg is not supported by device
+        }
+
     }
 
     private fun initSeekAndRange() {

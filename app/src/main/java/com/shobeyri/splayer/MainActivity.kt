@@ -476,7 +476,6 @@ class MainActivity : AppCompatActivity() , CallBackMenu , DialogEdit.CallBackDia
             val dialog : DialogTrim = DialogTrim(MainActivity@this,this,list.get(position).path)
             dialog.show()
         })
-
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener
         {
             override fun onProgressChanged(p0: SeekBar?, progress: Int, fromUser: Boolean) {
